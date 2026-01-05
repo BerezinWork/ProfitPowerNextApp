@@ -1,0 +1,36 @@
+# Зависимости
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Сборка (если будет TypeScript компиляция)
+dist/
+build/
+
+# Переменные окружения (САМОЕ ВАЖНОЕ!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Логи
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Настройки IDE (WebStorm, VS Code)
+.idea/
+.vscode/
+*.swp
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Операционная система
+.DS_Store
+Thumbs.db
