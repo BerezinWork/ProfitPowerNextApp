@@ -2,18 +2,18 @@ Modern Full-Stack Personal Finance Tracker built with clean architecture and per
 
 ## 🚀 Tech Stack
 
+### Frontend
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS + SCSS Modules (Hybrid approach)
+- **Architecture:** Feature-Sliced Design (Modified)
+- **State:** React Server Components (RSC) + Server Actions
+
 ### Backend
 - **Core:** Node.js, Express.js
 - **Database:** MongoDB (Mongoose)
 - **Language:** TypeScript
 - **Auth:** JWT (Access/Refresh strategy), httpOnly cookies, Bcrypt
 - **Features:** Server-side pagination, Filtering, Search, Data isolation
-
-### Frontend
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS + SCSS Modules (Hybrid approach)
-- **Architecture:** Feature-Sliced Design (Modified)
-- **State:** React Server Components (RSC) + Server Actions
 
 ## 🛠 Features (In Progress)
 - [x] Secure Authentication & Registration
