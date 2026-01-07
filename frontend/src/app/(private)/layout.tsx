@@ -1,6 +1,4 @@
-export default function PrivateLayout({
-                                          children,
-                                      }: {
+export default function PrivateLayout({children}: {
     children: React.ReactNode;
 }) {
     return (
