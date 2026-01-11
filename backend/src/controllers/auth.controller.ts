@@ -9,21 +9,31 @@ const COOKIE_NAME = 'refreshToken';
 // --- REGISTER ---
 export const register = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { email, password, name } = req.body;
+        // Changed: extract nickname instead of name
+        const { email, password, nickname } = req.body;
 
+        // 1. Check if email exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             res.status(400).json({ message: 'User with this email already exists' });
             return;
         }
 
+        // 2. Check if nickname exists (New logic)
+        const existingNickname = await User.findOne({ nickname });
+        if (existingNickname) {
+            res.status(400).json({ message: 'Nickname is already taken' });
+            return;
+        }
+
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password, salt);
 
+        // 3. Create user with nickname
         const newUser = await User.create({
             email,
             passwordHash,
-            name: name || 'User',
+            nickname, // Save nickname to DB
         });
 
         const defaultCategories = [
@@ -42,11 +52,12 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             maxAge: 30 * 24 * 60 * 60 * 1000,
         });
 
+        // Return nickname in response
         res.status(201).json({
             user: {
                 id: newUser._id,
                 email: newUser.email,
-                name: newUser.name,
+                nickname: newUser.nickname,
             },
             accessToken,
         });
@@ -82,11 +93,12 @@ export const login = async (req: Request, res: Response): Promise<void> => {
             maxAge: 30 * 24 * 60 * 60 * 1000,
         });
 
+        // Return nickname in response
         res.json({
             user: {
                 id: user._id,
                 email: user.email,
-                name: user.name,
+                nickname: user.nickname, // Changed from name to nickname
             },
             accessToken,
         });
@@ -126,7 +138,6 @@ export const refresh = async (req: Request, res: Response): Promise<void> => {
             return;
         }
 
-        // Correct Senior Typing approach
         const accessExpiresIn = (process.env.JWT_ACCESS_EXPIRES_IN || '15m') as SignOptions['expiresIn'];
 
         const accessOptions: SignOptions = {

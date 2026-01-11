@@ -3,9 +3,10 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface IUser extends Document {
     email: string;
     passwordHash: string;
-    name?: string;
+    nickname: string;
     avatar?: string;
     createdAt: Date;
+    updatedAt: Date;
 }
 
 const UserSchema: Schema = new Schema({
@@ -20,8 +21,11 @@ const UserSchema: Schema = new Schema({
         type: String,
         required: true
     },
-    name: {
-        type: String
+    nickname: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
     },
     avatar: {
         type: String
