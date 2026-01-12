@@ -18,8 +18,13 @@ export const registerSchema = z.object({
         .min(8, { message: "Min 8 chars" })
         .regex(/[A-Z]/, { message: "Need 1 uppercase letter" })
         .regex(/[a-z]/, { message: "Need 1 lowercase letter" })
-        .regex(/[0-9]/, { message: "Need 1 number" })
+        .regex(/[0-9]/, { message: "Need 1 number" }),
 
+    acceptTerms: z
+        .boolean()
+        .refine((val) => val === true, {
+            message: "You must accept Terms and Conditions",
+        }),
 });
 
 export type RegisterSchema = z.infer<typeof registerSchema>;

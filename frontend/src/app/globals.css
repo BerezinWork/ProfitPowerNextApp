@@ -1,10 +1,26 @@
 @import 'tailwindcss';
 
 :root {
-  --primary-color: #0f172a;
+  --font-main: var(--font-manrope), sans-serif;
+
+  --col-green: #30F68A;
+  --col-yellow: #FBD207;
+  --col-cyan: #82F2EB;
+  --col-red: #F5090D;
+
+  --col-bg-main: #000000;
+  --col-bg-sec: #444444;
+  --col-bg-purp: #1c0c33;
+
+  --col-text: #EBE6D7;
 }
 
 body {
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: var(--col-bg-main);
+  color: var(--col-text);
+  font-family: var(--font-main);
+
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
 }

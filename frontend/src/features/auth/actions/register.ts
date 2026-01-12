@@ -15,7 +15,12 @@ export async function registerUser(
     prevState: RegisterState,
     formData: FormData
 ): Promise<RegisterState> {
-    const validated = registerSchema.safeParse(Object.fromEntries(formData));
+    const rawData = Object.fromEntries(formData);
+    const dataToValidate = {
+        ...rawData,
+        acceptTerms: rawData.acceptTerms === 'on',
+    };
+    const validated = registerSchema.safeParse(dataToValidate);
 
     if (!validated.success) {
         return {
