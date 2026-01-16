@@ -9,8 +9,12 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-    title: "Profit Power",
+    title: {
+        template: "%s | Profit Power",
+        default: "Profit Power",
+    },
     description: "Finance App",
+    icons: "/short-logo.svg"
 };
 
 export default function RootLayout(
