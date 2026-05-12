@@ -18,7 +18,7 @@ Modern Full-Stack Personal Finance Tracker built with clean architecture and per
 ## 🛠 Features (In Progress)
 - [x] Secure Authentication & Registration
 - [x] Category Management (CRUD)
-- [x] Transactions API (Create, Delete, Read with Filters)
+- [ ] Transactions API (Create, Delete, Read with Filters)
 - [ ] Smart Dashboard & Analytics
 - [ ] User Profile Settings
 
